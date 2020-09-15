@@ -21,7 +21,7 @@ const header = () => {
     return (
         <div className='headerWrapper'>
             <h1>Wanna Sweet Ride?</h1>
-            <a href="https://www.youtube.com/watch?v=Z8lEh2npV7Y" target="_blank">Click here for your chance to win a new <strong className="makeStrong">{bestShip.name}</strong>!</a>
+            <a href="https://www.youtube.com/watch?v=Z8lEh2npV7Y" target="_blank" rel="noopener noreferrer">Click here for your chance to win a new <strong className="makeStrong">{bestShip.name}</strong>!</a>
             <p>Look through our assortment of {ships.length} Ships!</p>
         </div>
     )
