@@ -1,0 +1,69 @@
+:root{
+    --main: #004f6f;
+    --main2: #646469;
+    --secondary: #bcbcbc;
+    --accent: #8fc3d4;
+    
+}
+
+.headerWrapper {
+    background-color: var(--main);
+    color: var(--secondary);
+    
+}
+.headerWrapper h1{
+    font-size: 4rem;
+    padding: 1rem;
+}
+
+.headerWrapper a{
+    color: var(--accent);
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.headerWrapper p {
+    background-color: var(--main2);
+    padding: 1rem;
+    color: white;
+    font-size: 1.6rem;
+}
+
+.shipsWrapper {
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+
+.shipTile {
+    background-color: var(--main2);
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 4rem;
+}
+
+.imgWrapper img{
+    border-radius: 4rem;
+    width: auto;
+    height: 300px;
+}
+
+.shipInfo {
+    padding: 1rem;
+}
+
+.shipInfo h3 {
+    font-size: 1.4rem;
+    padding-bottom: .5rem;
+}
+
+.shipInfo p {
+    padding-bottom: .5rem;
+}
+
+.shipInfo li {
+    padding: .5rem;
+}
+
