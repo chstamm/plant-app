@@ -9,8 +9,8 @@ const Header = () => {
 
   const getShipData = async () => {
     try {
-      const data = await axios.get("https://swapi.dev/api/starships");
-      const ships = data.results;
+      const data = await axios.get(`https://cors-anywhere.herokuapp.com/swapi.dev/api/starships`);
+      const ships = data.data.results;
       console.log(data);
       const bestShip = ships
       .filter((ship) => {

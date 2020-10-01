@@ -1,18 +1,33 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./css-reset.css";
 import "./starships.css";
+import { makeStyles } from "@material-ui/core";
+import data from '../data/starships.json'
+import { 
+  Grid,
+  Card,
+  CardActionArea,
+  CardContent,
+  Typography,
+ } from "@material-ui/core";
 
+const myStyles = makeStyles({
+  root: {
+    maxWidth: 1080,
+  },
+});
 
 const Starship = () => {
-
-  const [shipData, setShips] = useState({ships: [],});
+  const [shipData, setShips] = useState(data.results);
 
   const getShipData = async () => {
     try {
-      const data = await axios.get("https://swapi.dev/api/starships");
-      setShips(data.results);
+      const data = await axios.get(
+        `https://cors-anywhere.herokuapp.com/swapi.dev/api/starships`
+      );
       console.log(data);
+      setShips(data.data.results);
     } catch {
       return null;
     }
@@ -22,9 +37,11 @@ const Starship = () => {
     getShipData();
   });
 
+  const styles = myStyles();
+
   return (
-    <div className="shipsWrapper">
-      {shipData.ships
+    <Grid container space={40}>
+      {shipData
         .filter((ship) => {
           return ship.cost_in_credits !== "unknown";
         })
@@ -46,6 +63,7 @@ const Starship = () => {
 
           const shipNum = getShipNum(ship.url);
           return (
+            <Grid item xs="6">
             <div className="shipTile" key={ship.url}>
               <div className="imgWrapper">
                 <img
@@ -70,9 +88,10 @@ const Starship = () => {
                 </ul>
               </div>
             </div>
+            </Grid>
           );
         })}
-    </div>
+    </Grid>
   );
 };
 
