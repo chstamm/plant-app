@@ -33,7 +33,7 @@ const Header = () => {
 
   useEffect(() => {
     getShipData();
-  });
+  }, []);
 
   return (
     <div className="headerWrapper">

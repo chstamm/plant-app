@@ -3,15 +3,19 @@ import axios from "axios";
 import "./css-reset.css";
 import "./starships.css";
 import { makeStyles } from "@material-ui/core";
-import data from '../data/starships.json'
-import { 
+import data from "../data/starships.json";
+import {
   Grid,
-  
- } from "@material-ui/core";
+  Card,
+  CardContent,
+  CardActionArea,
+  CardMedia,
+} from "@material-ui/core";
 
 const myStyles = makeStyles({
-  root: {
-    maxWidth: 1080,
+  cardWidth: {
+    maxWidth: 800,
+    height: "auto",
   },
 });
 
@@ -31,13 +35,14 @@ const Starship = () => {
   };
 
   useEffect(() => {
+    console.log('starship')
     getShipData();
-  });
+  }, []);
 
   const styles = myStyles();
-  
+
   return (
-    <Grid container space={40} classes={styles.root}>
+    <div>
       {shipData
         .filter((ship) => {
           return ship.cost_in_credits !== "unknown";
@@ -60,35 +65,39 @@ const Starship = () => {
 
           const shipNum = getShipNum(ship.url);
           return (
-            <Grid item xs="6">
-            <div className="shipTile" key={ship.url}>
-              <div className="imgWrapper">
-                <img
-                  src={`https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`}
-                  onError={(noImg) => {
-                    noImg.target.onerror = null;
-                    noImg.target.src =
-                      "https://starwars-visualguide.com/assets/img/placeholder.jpg";
-                  }}
-                  alt="starship"
-                />
-              </div>
-              <div className="shipInfo">
-                <h3>{ship.name}</h3>
-                <p>
-                  <strong>{ship.cost_in_credits} credits</strong>
-                </p>
-                <ul>
-                  <li>{ship.model}</li>
-                  <li>{ship.manufacturer}</li>
-                  <li>{ship.starship_class}</li>
-                </ul>
-              </div>
-            </div>
+            <Grid item xs={6} key={ship.url}>
+              <Card className={styles.cardWidth}>
+                <CardActionArea>
+                  <CardMedia>
+                    <img
+                      src={`https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`}
+                      onError={(noImg) => {
+                        noImg.target.onerror = null;
+                        noImg.target.src =
+                          "https://starwars-visualguide.com/assets/img/placeholder.jpg";
+                      }}
+                      alt="starship"
+                    />
+                  </CardMedia>
+                  <CardContent>
+                    <div className="shipInfo">
+                      <h3>{ship.name}</h3>
+                      <p>
+                        <strong>{ship.cost_in_credits} credits</strong>
+                      </p>
+                      <ul>
+                        <li>{ship.model}</li>
+                        <li>{ship.manufacturer}</li>
+                        <li>{ship.starship_class}</li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             </Grid>
           );
         })}
-    </Grid>
+    </div>
   );
 };
 
