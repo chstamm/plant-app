@@ -6,10 +6,7 @@ import { makeStyles } from "@material-ui/core";
 import data from '../data/starships.json'
 import { 
   Grid,
-  Card,
-  CardActionArea,
-  CardContent,
-  Typography,
+  
  } from "@material-ui/core";
 
 const myStyles = makeStyles({
@@ -38,9 +35,9 @@ const Starship = () => {
   });
 
   const styles = myStyles();
-
+  
   return (
-    <Grid container space={40}>
+    <Grid container space={40} classes={styles.root}>
       {shipData
         .filter((ship) => {
           return ship.cost_in_credits !== "unknown";
