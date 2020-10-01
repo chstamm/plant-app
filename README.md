@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 I took the API from a Starwars Ships JSON file, and imported it into both components of my ship-app
 
-## Components I used:
+## Components I Used:
 * Functional: 
     * Header.js
 * Class:
