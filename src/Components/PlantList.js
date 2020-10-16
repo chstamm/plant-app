@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+//import axios from "axios";
+
+//Below is for Design Testing Only 
+import plantdata from "./plants.json"; 
 import PlantCard from "./PlantCard";
 
-const PlantData = () => {
+const PlantList = () => {
   const [plants, setPlants] = useState();
 
-  useEffect(() => {
+/*   useEffect(() => {
     const apiKey = process.env.REACT_APP_TREFLE_PLANT_API_KEY;
     console.log(process.env);
     const getPlantData = async () => {
@@ -20,7 +23,15 @@ const PlantData = () => {
       }
     };
     getPlantData();
-  }, []);
+  }, []); */
+
+  //Below is for Design Testing Only 
+  useEffect(() => {
+    setPlants(plantdata.data)
+  }, [])
+
+
+
 
   return (
     <div>
@@ -45,4 +56,4 @@ const PlantData = () => {
   );
 };
 
-export default PlantData;
+export default PlantList;
