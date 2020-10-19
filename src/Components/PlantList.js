@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 //import axios from "axios";
-
+import PlantCard from "./PlantCard"
 //Below is for Design Testing Only 
 import plantdata from "./plants.json"; 
-import PlantCard from "./PlantCard";
+
+
 
 const PlantList = () => {
   const [plants, setPlants] = useState();
