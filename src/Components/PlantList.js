@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import PlantCard from "./PlantCard"
 //Below is for Design Testing Only 
 import plantdata from "./plants.json"; 
+import {Grid, makeStyles} from '@material-ui/core';
 
 
 
@@ -31,17 +32,25 @@ const PlantList = () => {
     setPlants(plantdata.data)
   }, [])
 
+  const useStyles = makeStyles({
+    root: {
+      flexGrow: 1,
+      padding: 30,
+      backgroundColor: '#214e28',
+    }
+  });
 
+  const classes = useStyles()
 
 
   return (
-    <div>
-      <div>
+    <div className={classes.root}>
+      <Grid container spacing={2}>
         {plants &&
           plants.map((plant) => {
             return (
+              <Grid item key={plant.id}>
               <PlantCard
-                key={plant.id}
                 common_name={plant.common_name}
                 family_common_name={plant.family_common_name}
                 scientific_name={plant.scientific_name}
@@ -50,9 +59,10 @@ const PlantList = () => {
                 img={plant.image_url}
                 year={plant.year}
               />
+              </Grid>
             );
           })}
-      </div>
+      </Grid>
     </div>
   );
 };

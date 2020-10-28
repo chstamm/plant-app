@@ -3,23 +3,46 @@ import {
   AppBar,
   Toolbar,
   IconButton,
+  makeStyles,
   Button,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { NavLink } from 'react-router-dom'
+import MenuIcon from '@material-ui/icons/Menu';
+
 
 
 const Navbar = () => {
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
+
+  const classes = useStyles();
+
   return (
-    
+    <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
+          <IconButton>
             <MenuIcon />
           </IconButton>
-          <Button color="inherit">Sign Up</Button>
+          <Button>
+          <NavLink to="/signup">Sign Up</NavLink>
+          </Button>
+          <Button>
+          <NavLink to="/">Plants</NavLink>
+          </Button>
         </Toolbar>
       </AppBar>
-
+    </div>
   );
 };
 
