@@ -21,7 +21,7 @@ const PlantCard = (props) => {
 
   return (
     <div>
-   
+        
         <Card className={classes.card}>
           <CardHeader
             title={props.common_name}

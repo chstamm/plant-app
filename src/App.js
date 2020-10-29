@@ -4,9 +4,12 @@ import './App.css';
 import Header from './Components/Header';
 import PlantList from './Components/PlantList'
 import Signup from './Components/Signup'
+import {PlantContextProvider} from './contexts/PlantContext';
+
 
 function App() {
   return (
+    <PlantContextProvider>
     <div className="App">
       <Header />
       <Switch>
@@ -15,6 +18,7 @@ function App() {
         <Route path="/" exact component={PlantList} />
       </Switch>
     </div>
+    </PlantContextProvider>
   );
 }
 

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 //import axios from "axios";
 import PlantCard from "./PlantCard"
 //Below is for Design Testing Only 
-import plantdata from "./plants.json"; 
+//import plantdata from "./plants.json"; 
 import {Grid, makeStyles} from '@material-ui/core';
+import{ usePlantContext} from '../contexts/PlantContext';
 
 
 
 const PlantList = () => {
-  const [plants, setPlants] = useState();
+  //const [plants, setPlants] = useState();
 
 /*   useEffect(() => {
     const apiKey = process.env.REACT_APP_TREFLE_PLANT_API_KEY;
@@ -28,9 +29,11 @@ const PlantList = () => {
   }, []); */
 
   //Below is for Design Testing Only 
-  useEffect(() => {
+/*   useEffect(() => {
     setPlants(plantdata.data)
-  }, [])
+  }, []) */
+
+  const plantData = usePlantContext()
 
   const useStyles = makeStyles({
     root: {
@@ -46,8 +49,8 @@ const PlantList = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
-        {plants &&
-          plants.map((plant) => {
+        {plantData.plants &&
+          plantData.plants.map((plant) => {
             return (
               <Grid item key={plant.id}>
               <PlantCard

@@ -1,10 +1,31 @@
 import React from 'react';
-import {Container, } from "@material-ui/core"
+import { Container, TextField, } from "@material-ui/core"
 
 const Signup = () => {
     return (
         <Container>
-            Hello!
+            <TextField
+          required
+          id="outlined-required"
+          label="Full Name"
+          variant="outlined"
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Email"
+          //defaultValue="Hello World"
+          variant="outlined"
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Password"
+          type="password"
+          //defaultValue="Hello World"
+          variant="outlined"
+        />
+           
         </Container>
     )
 }
