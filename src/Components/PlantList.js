@@ -1,37 +1,12 @@
 import React from "react";
-//import axios from "axios";
 import PlantCard from "./PlantCard"
-//Below is for Design Testing Only 
-//import plantdata from "./plants.json"; 
 import {Grid, makeStyles} from '@material-ui/core';
 import{ usePlantContext} from '../contexts/PlantContext';
 
 
 
 const PlantList = () => {
-  //const [plants, setPlants] = useState();
-
-/*   useEffect(() => {
-    const apiKey = process.env.REACT_APP_TREFLE_PLANT_API_KEY;
-    console.log(process.env);
-    const getPlantData = async () => {
-      try {
-        const data = await axios.get(
-          `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants?token=${apiKey}`
-        );
-        setPlants(data.data.data);
-        console.log(data.data);
-      } catch {
-        console.log("error");
-      }
-    };
-    getPlantData();
-  }, []); */
-
-  //Below is for Design Testing Only 
-/*   useEffect(() => {
-    setPlants(plantdata.data)
-  }, []) */
+ 
 
   const plantData = usePlantContext()
 

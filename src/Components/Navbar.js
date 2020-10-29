@@ -1,17 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   AppBar,
   Toolbar,
-  IconButton,
-  makeStyles,
   Button,
+  makeStyles,
 } from "@material-ui/core";
-import { NavLink } from 'react-router-dom'
-import MenuIcon from '@material-ui/icons/Menu';
+import SignupDialog from './SignupDialog';
+
 
 
 
 const Navbar = () => {
+    const [signupOpen, setSignupOpen] = useState(false)
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,20 +27,26 @@ const Navbar = () => {
 
   const classes = useStyles();
 
+  const handleDialogToggle = () => {
+      setSignupOpen(!signupOpen);
+      console.log("it works!")
+  }
+
+  
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
-          <Button>
-          <NavLink to="/signup">Sign Up</NavLink>
-          </Button>
-          <Button>
-          <NavLink to="/">Plants</NavLink>
-          </Button>
+          
+        
+         <Button color='inherit' onClick={handleDialogToggle}>
+            Sign Up!
+         </Button>
+    
+
         </Toolbar>
+        <SignupDialog open={signupOpen} onClose={handleDialogToggle}/>
       </AppBar>
     </div>
   );
