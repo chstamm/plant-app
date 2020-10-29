@@ -14,7 +14,7 @@ const PlantList = () => {
     root: {
       flexGrow: 1,
       padding: 30,
-      backgroundColor: '#214e28',
+      
     }
   });
 
