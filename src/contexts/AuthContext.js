@@ -5,7 +5,7 @@ const AuthContext = React.createContext({
     login: () => {}
 })
 
-export const AuthContextProvider = () => {
+export const AuthContextProvider = (props) => {
     return (
         <div>
             

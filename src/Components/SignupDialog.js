@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
-//import { makeStyles } from "@material-ui/core/styles";
+
 
 const SignupDialog = (props) => {
 
@@ -79,6 +79,7 @@ const SignupDialog = (props) => {
               <DialogContent>
                 <TextField
                   required
+                  name="name"
                   label="Full Name"
                   variant="filled"
                   margin="normal"
