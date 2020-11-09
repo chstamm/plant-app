@@ -12,7 +12,7 @@ const PlantContext = createContext({ plants: [] });
     const getPlantData = async () => {
       try {
         const data = await axios.get(
-          `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants?token=${apiKey}`
+          `https://trefle.io/api/v1/plants?token=${apiKey}`
         );
         setPlants(data.data.data);
       } catch {
