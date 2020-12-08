@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
   Button,
   Dialog,
@@ -8,8 +8,10 @@ import {
   DialogActions,
   makeStyles,
 } from "@material-ui/core";
+import {AuthContext} from "../contexts/AuthContext"
 import { Formik } from "formik";
 import * as Yup from "yup";
+
 
 
 const SignupDialog = (props) => {
@@ -19,12 +21,12 @@ const SignupDialog = (props) => {
       Width: 500,
     }
   });
-
+  const authContext = useContext(AuthContext)
   const classes = useStyles()
 
   const { open, onClose } = props;
   const handleClose = () => {
-    onClose();
+    onClose(false);
   };
 
   const SignupSchema = Yup.object().shape({
@@ -51,15 +53,15 @@ const SignupDialog = (props) => {
         <DialogTitle id="simple-dialog-title">Sign Up</DialogTitle>
         <Formik
           initialValues={{
-            name: "John Smith",
-            email: "test@email.com",
-            password: "password1234",
+            name: "",
+            email: "",
+            password: "",
             submit: null,
           }}
           validationSchema={SignupSchema}
-          onSubmit={(values) => {
+          onSubmit={(values, {setErrors, setStatus, setSubmitting,}) => {
             try {
-              console.log(values.name, values.email, values.password);
+              authContext.login()
               handleClose();
             } catch (error) {
               console.error(error);
@@ -86,6 +88,7 @@ const SignupDialog = (props) => {
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  placeholder="John Smith"
                   fullWidth
                 />
                 {errors.name && touched.name && errors.name}
@@ -99,6 +102,7 @@ const SignupDialog = (props) => {
                   name="email"
                   variant="filled"
                   margin="normal"
+                  placeholder="test@email.com"
                   fullWidth
                 />
                 {errors.email && touched.email && errors.email}
@@ -112,6 +116,7 @@ const SignupDialog = (props) => {
                   name="password"
                   variant="filled"
                   margin="normal"
+                  placeholder="********"
                   fullWidth
                 />
                 {errors.password && touched.password && errors.password}
@@ -119,12 +124,12 @@ const SignupDialog = (props) => {
               <DialogActions>
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
-                  onClick={handleClose}
+                  variant="contained"
+                  disabled={Boolean(errors.name || errors.email || errors.password)}
                 >
                   Save
                 </Button>
-                <Button onClick={handleClose}>Cancel</Button>
+                <Button variant="contained" onClick={handleClose}>Cancel</Button>
               </DialogActions>
             </form>
           )}

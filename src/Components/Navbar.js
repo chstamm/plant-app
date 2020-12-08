@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {
   AppBar,
   Toolbar,
@@ -6,12 +6,15 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import SignupDialog from './SignupDialog';
+import {AuthContext} from "../contexts/AuthContext"
 
 
 
 
 const Navbar = () => {
-    const [signupOpen, setSignupOpen] = useState(false)
+    const [loginOpen, setLoginOpen] = useState(false)
+    // set to true if you want dialog to open first 
+    const authContext = useContext(AuthContext);
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,11 +30,22 @@ const Navbar = () => {
 
   const classes = useStyles();
 
-  const handleDialogToggle = () => {
-      setSignupOpen(!signupOpen);
-      console.log("it works!")
-  }
 
+
+  const handleAuth = () => {
+    if (authContext.isAuth) {
+      authContext.logout()
+      setLoginOpen(false)
+      return
+    }
+    if (!authContext.isAuth) {
+      if (!loginOpen) {
+        setLoginOpen(true)
+        return
+      }
+      setLoginOpen(false)
+    }
+  }
   
 
   return (
@@ -40,13 +54,15 @@ const Navbar = () => {
         <Toolbar>
           
         
-         <Button color='inherit' onClick={handleDialogToggle}>
-            Sign Up!
-         </Button>
+         { 
+          authContext.isAuth ? <Button color='inherit' onClick={handleAuth}> Logout </Button> :
+        <Button color='inherit' onClick={handleAuth}> Login </Button>
+         }
+         
     
 
         </Toolbar>
-        <SignupDialog open={signupOpen} onClose={handleDialogToggle}/>
+        <SignupDialog open={loginOpen} onClose={handleAuth}/>
       </AppBar>
     </div>
   );

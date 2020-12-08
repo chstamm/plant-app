@@ -14,6 +14,7 @@ const PlantContext = createContext({ plants: [] });
         const data = await axios.get(
           `https://trefle.io/api/v1/plants?token=${apiKey}`
         );
+
         setPlants(data.data.data);
       } catch {
         console.log("error");
