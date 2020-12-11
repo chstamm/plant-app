@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import "./App.css";
 import Welcome from "./Components/WelcomePage/Welcome";
 import Header from "./Components/MainLayout/Header";
@@ -14,8 +14,6 @@ function App() {
       <AuthContextProvider>
         <PlantContextProvider>
           <div className="App">
-            <Route path="/" exact render={() => Welcome} />
-            <Route path="/" exact render={() => PlantList} />s
             <Header />
             <PlantList />
           </div>
