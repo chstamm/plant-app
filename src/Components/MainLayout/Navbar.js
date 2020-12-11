@@ -5,8 +5,8 @@ import {
   Button,
   makeStyles,
 } from "@material-ui/core";
-import SignupDialog from './SignupDialog';
-import {AuthContext} from "../contexts/AuthContext"
+import Login from '../../Components/WelcomePage/Login';
+import {AuthContext} from "../../contexts/AuthContext"
 
 
 
@@ -62,7 +62,7 @@ const Navbar = () => {
     
 
         </Toolbar>
-        <SignupDialog open={loginOpen} onClose={handleAuth}/>
+        <Login open={loginOpen} onClose={handleAuth}/>
       </AppBar>
     </div>
   );

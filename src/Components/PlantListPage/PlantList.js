@@ -1,7 +1,7 @@
 import React from "react";
 import PlantCard from "./PlantCard"
 import {Grid, makeStyles} from '@material-ui/core';
-import{ usePlantContext} from '../contexts/PlantContext';
+import{ usePlantContext} from '../../contexts/PlantContext';
 
 
 

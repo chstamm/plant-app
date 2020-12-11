@@ -8,13 +8,13 @@ import {
   DialogActions,
   makeStyles,
 } from "@material-ui/core";
-import {AuthContext} from "../contexts/AuthContext"
+import {AuthContext} from "../../contexts/AuthContext"
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 
 
-const SignupDialog = (props) => {
+const Login = (props) => {
 
   const useStyles = makeStyles({
     root: {
@@ -29,9 +29,7 @@ const SignupDialog = (props) => {
     onClose(false);
   };
 
-  const SignupSchema = Yup.object().shape({
-    name: Yup.string()
-      .required ("Must Enter a Name"),
+  const LoginSchema = Yup.object().shape({
     email: Yup.string()
       .required("Email Required")
       .email("Please Put Valid Email")
@@ -50,16 +48,15 @@ const SignupDialog = (props) => {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="simple-dialog-title">Sign Up</DialogTitle>
+        <DialogTitle id="simple-dialog-title">Login</DialogTitle>
         <Formik
           initialValues={{
-            name: "",
             email: "",
             password: "",
             submit: null,
           }}
-          validationSchema={SignupSchema}
-          onSubmit={(values, {setErrors, setStatus, setSubmitting,}) => {
+          validationSchema={LoginSchema}
+          onSubmit={() => {
             try {
               authContext.login()
               handleClose();
@@ -79,19 +76,6 @@ const SignupDialog = (props) => {
           }) => (
             <form noValidate autoComplete="off" onSubmit={handleSubmit}>
               <DialogContent>
-                <TextField
-                  required
-                  name="name"
-                  label="Full Name"
-                  variant="filled"
-                  margin="normal"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="John Smith"
-                  fullWidth
-                />
-                {errors.name && touched.name && errors.name}
                 <TextField
                   required
                   onChange={handleChange}
@@ -125,7 +109,7 @@ const SignupDialog = (props) => {
                 <Button
                   type="submit"
                   variant="contained"
-                  disabled={Boolean(errors.name || errors.email || errors.password)}
+                  disabled={Boolean(errors.email || errors.password)}
                 >
                   Save
                 </Button>
@@ -139,4 +123,4 @@ const SignupDialog = (props) => {
   );
 };
 
-export default SignupDialog;
+export default Login;
