@@ -5,9 +5,9 @@ import {
   Button,
   makeStyles,
 } from "@material-ui/core";
-import Login from '../../Components/WelcomePage/Login';
+import Login from '../WelcomePage/Login';
 import {AuthContext} from "../../contexts/AuthContext"
-
+import {NavLink} from "react-router-dom";
 
 
 
@@ -26,6 +26,10 @@ const Navbar = () => {
     title: {
       flexGrow: 1,
     },
+    links: {
+      textDecoration: "none",
+      color: "white",
+    }
   }));
 
   const classes = useStyles();
@@ -58,6 +62,13 @@ const Navbar = () => {
           authContext.isAuth ? <Button color='inherit' onClick={handleAuth}> Logout </Button> :
         <Button color='inherit' onClick={handleAuth}> Login </Button>
          }
+          <Button>
+          <NavLink className={classes.links} to="/">Home</NavLink>
+          </Button>
+          <Button>
+          <NavLink className={classes.links} to="/plants">Plants</NavLink>
+          </Button>
+         
          
     
 
