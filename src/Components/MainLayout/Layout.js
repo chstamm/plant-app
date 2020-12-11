@@ -1,20 +1,13 @@
-import React, {useState, useContext} from "react";
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  makeStyles,
-} from "@material-ui/core";
-import Login from '../WelcomePage/Login';
-import {AuthContext} from "../../contexts/AuthContext"
-import {NavLink} from "react-router-dom";
-
-
+import React, { useState, useContext } from "react";
+import { AppBar, Toolbar, Button, makeStyles } from "@material-ui/core";
+import Login from "../WelcomePage/Login";
+import { AuthContext } from "../../contexts/AuthContext";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-    const [loginOpen, setLoginOpen] = useState(false)
-    // set to true if you want dialog to open first 
-    const authContext = useContext(AuthContext);
+  const [loginOpen, setLoginOpen] = useState(false);
+  // set to true if you want dialog to open first
+  const authContext = useContext(AuthContext);
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,51 +22,58 @@ const Navbar = () => {
     links: {
       textDecoration: "none",
       color: "white",
-    }
+    },
   }));
 
   const classes = useStyles();
 
-
-
   const handleAuth = () => {
     if (authContext.isAuth) {
-      authContext.logout()
-      setLoginOpen(false)
-      return
+      authContext.logout();
+      setLoginOpen(false);
+      return;
     }
     if (!authContext.isAuth) {
       if (!loginOpen) {
-        setLoginOpen(true)
-        return
+        setLoginOpen(true);
+        return;
       }
-      setLoginOpen(false)
+      setLoginOpen(false);
     }
-  }
-  
+  };
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          
-        
-         { 
-          authContext.isAuth ? <Button color='inherit' onClick={handleAuth}> Logout </Button> :
-        <Button color='inherit' onClick={handleAuth}> Login </Button>
-         }
+          {authContext.isAuth ? (
+            <Button color="inherit" onClick={handleAuth}>
+              {" "}
+              Logout{" "}
+            </Button>
+          ) : (
+            <Button color="inherit" onClick={handleAuth}>
+              {" "}
+              Login{" "}
+            </Button>
+          )}
           <Button>
-          <NavLink className={classes.links} to="/">Home</NavLink>
+            <NavLink className={classes.links} to="/">
+              Home
+            </NavLink>
           </Button>
           <Button>
-          <NavLink className={classes.links} to="/plants">Plants</NavLink>
+            <NavLink className={classes.links} to="/plants">
+              Plants
+            </NavLink>
           </Button>
-         
-         
-    
-
+          <Button>
+            <NavLink className={classes.links} to="/profile">
+              Profile
+            </NavLink>
+          </Button>
         </Toolbar>
-        <Login open={loginOpen} onClose={handleAuth}/>
+        <Login open={loginOpen} onClose={handleAuth} />
       </AppBar>
     </div>
   );
