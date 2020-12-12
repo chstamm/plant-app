@@ -59,6 +59,11 @@ const Navbar = () => {
             </Button>
           )}
           <Button>
+            <NavLink className={classes.links} to="/signup">
+              Sign Up
+            </NavLink>
+          </Button>
+          <Button>
             <NavLink className={classes.links} to="/">
               Home
             </NavLink>

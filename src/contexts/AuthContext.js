@@ -1,4 +1,5 @@
 import React, {useState, createContext} from 'react';
+//import { auth } from "../lib/firebase"
 
 export const AuthContext = createContext({
     isAuth: false, 
@@ -9,7 +10,7 @@ export const AuthContext = createContext({
 const AuthContextProvider = (props) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-    const signinHandler = () => {
+    const loginHandler = () => {
         setIsAuthenticated(true)
     }
     const logoutHandler = () => {
@@ -20,7 +21,7 @@ const AuthContextProvider = (props) => {
     return (
         <div>
             <AuthContext.Provider value = {{
-                login: signinHandler,
+                login: loginHandler,
                 logout: logoutHandler,
                 isAuth: isAuthenticated
             }} >
