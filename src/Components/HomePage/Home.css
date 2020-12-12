@@ -1,0 +1,13 @@
+.navBackground {
+    margin: 0 auto;
+	min-height: 200px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url(../../imgs/plant-app-header.jpg);
+	color: black;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+    padding: 1rem;
+}

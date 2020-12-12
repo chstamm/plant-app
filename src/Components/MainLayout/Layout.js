@@ -4,6 +4,7 @@ import Login from "../Login/Login";
 import { AuthContext } from "../../contexts/AuthContext";
 import { NavLink } from "react-router-dom";
 
+
 const Navbar = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   // set to true if you want dialog to open first
@@ -44,7 +45,7 @@ const Navbar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className="navBackground">
         <Toolbar>
           {authContext.isAuth ? (
             <Button color="inherit" onClick={handleAuth}>

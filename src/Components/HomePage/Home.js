@@ -1,5 +1,6 @@
 import React from 'react';
 //import { usePlantContext } from '../../src/contexts/PlantContext'
+import "./Home.css"
 
 const Home = () => {
 
@@ -7,7 +8,9 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Welcome to Plants!</h1>
+            <div>
+                <h1>Welcome to Plants!</h1>
+            </div>
         </div>
     )
 }
