@@ -7,12 +7,15 @@ import {
   DialogContent,
   DialogActions,
   makeStyles,
+  Slide
 } from "@material-ui/core";
 import {AuthContext} from "../../contexts/AuthContext"
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const Login = (props) => {
 
@@ -45,6 +48,8 @@ const Login = (props) => {
       <Dialog
         className={classes.root}
         open={open}
+        TransitionComponent={Transition}
+        keepMounted
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
