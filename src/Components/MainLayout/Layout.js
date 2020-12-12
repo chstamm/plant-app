@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AppBar, Toolbar, Button, makeStyles } from "@material-ui/core";
-import Login from "../WelcomePage/Login";
+import Login from "../Login/Login";
 import { AuthContext } from "../../contexts/AuthContext";
 import { NavLink } from "react-router-dom";
 
