@@ -34,15 +34,15 @@ const SignUp = () => {
           <CardHeader title="Sign Up Form" />
           <CardContent>
             <form noValidate autoComplete="off">
-              <TextField id="filled-basic" label="Email" variant="filled" />
-              <TextField id="filled-basic" label="Password" variant="filled" />
+              <TextField id="email" label="Email" variant="filled" />
+              <TextField id="password" label="Password" variant="filled" />
               <TextField
-                id="filled-basic"
+                id="confirm-password"
                 label="Confirm Password"
                 variant="filled"
               />
             </form>
-            <Button variant="contained">Sign Up</Button>
+            <Button type="submit" variant="contained">Sign Up</Button>
           </CardContent>
         </Card>
       </Box>
