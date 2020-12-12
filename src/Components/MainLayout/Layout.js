@@ -69,8 +69,8 @@ const Navbar = () => {
             </NavLink>
           </Button>
           <Button>
-            <NavLink className={classes.links} to="/profile">
-              Profile
+            <NavLink className={classes.links} to="/favorites">
+              Favorites
             </NavLink>
           </Button>
         </Toolbar>

@@ -4,7 +4,7 @@ import "./App.css";
 import Layout from "./Components/MainLayout/Layout";
 import Home from "./Components/HomePage/Home"
 import PlantList from "../src/Components/PlantListPage/PlantList";
-import Profile from "../src/Components/Profile";
+import Favorites from "./Components/Favorites";
 import { PlantContextProvider } from "./contexts/PlantContext";
 import AuthContextProvider from "./contexts/AuthContext";
 import { CSSTransition } from 'react-transition-group'
@@ -12,7 +12,7 @@ import { CSSTransition } from 'react-transition-group'
 const routes = [
   { path: '/', Component: Home, },
   { path: '/plants', Component: PlantList, },
-  { path: '/profile', Component: Profile, }
+  { path: '/favorites', Component: Favorites, }
 ]
 
 function App() {
