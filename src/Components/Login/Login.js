@@ -77,7 +77,6 @@ const Login = (props) => {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting,
           }) => (
             <form noValidate autoComplete="off" onSubmit={handleSubmit}>
               <DialogContent>

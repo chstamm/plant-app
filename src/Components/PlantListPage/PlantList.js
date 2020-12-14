@@ -1,5 +1,6 @@
 import React from "react";
 import PlantCard from "./PlantCard";
+import Drawer from "./Drawer";
 import { Grid, makeStyles } from "@material-ui/core";
 import { usePlantContext } from "../../contexts/PlantContext";
 
@@ -25,7 +26,10 @@ const PlantList = () => {
         {plantData.plants &&
           plantData.plants.map((plant) => {
             return (
+              <div>
+                <Drawer></Drawer>
               <Grid item key={plant.id}>
+                
                 <PlantCard
                   common_name={plant.common_name}
                   family_common_name={plant.family_common_name}
@@ -36,6 +40,7 @@ const PlantList = () => {
                   year={plant.year}
                 />
               </Grid>
+              </div>
             );
           })}
       </Grid>
